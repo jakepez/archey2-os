@@ -40,8 +40,8 @@ brew install jakepez/repo/archey2
 
 To run when your terminal starts, add something like this to your relevant .zshrc, .bashrc, .profile, etc.
 ```bash
-if [ -f /opt/homebrew/bin/archey ]; then
-    /opt/homebrew/bin/archey [options]
+if [ -f $(brew --prefix)/bin/archey ]; then
+    $(brew --prefix)/bin/archey [options]
 fi
 ```
 
