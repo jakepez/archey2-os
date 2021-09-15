@@ -60,5 +60,6 @@ brew install jakepez/repo/archey2
 ## License
 This tool is protected by the [GNU General Public License v2](http://www.gnu.org/licenses/gpl-2.0.html).
 
-Portions Copyright [Jeffrey Hann](http://jeffreyhann.ca/) 2016
-Copyright [Jacob Pszonowsky](https://github.com/jakepez/archey2-osx/) 2021
+Portions Copyright (c) [Jeffrey Hann](http://jeffreyhann.ca/) 2016
+
+Copyright (c) [Jacob Pszonowsky](https://github.com/jakepez/archey2-osx/) 2021
