@@ -1,20 +1,20 @@
-# Archey for OS X
-An archey script for OS X.
+# Archey2 for OS X
+An updated archey script for OS X.
 
 ```sh
-                 ###                  User: jhann
-               ####                   Hostname: obihann
-               ###                    Distro: OS X 10.10.5
-       #######    #######             Kernel: Darwin
-     ######################           Uptime:  6:11
-    #####################             Shell: /bin/zsh
-    ####################              Terminal: xterm-256color iTerm.app
-    ####################              Packages: 114
-    #####################             CPU: Intel Core i5-3210M CPU @ 2.50GHz
-     ######################           Memory: 8 GB
-      ####################            Disk: 95%
-        ################              Battery: 100.00%
-         ####     #####               IP Address: 24.222.18.26
+                 ###          User: jake
+               ####           Hostname: pez
+               ###            Distro: macOS Monterey 12.0
+       #######    #######     Kernel: Darwin 21.1.0
+     ######################   Uptime: 1 day, 2 hours, 42 minutes
+    #####################     Shell: /bin/zsh
+    ####################      Terminal: xterm-256color iTerm.app
+    ####################      Packages: 114
+    #####################     CPU: Apple M1 x (8)
+     ######################   Memory: 16 GB
+      ####################    Disk: 75%
+        ################      Battery: 100.00%
+         ####     #####       IP Address: 24.222.18.26
 ```
 
 ## Table Of Contents
@@ -25,13 +25,17 @@ An archey script for OS X.
 * [License](#license)
 
 ## Download
-The latest stable release is [1.6.0](https://github.com/obihann/archey-osx/archive/1.6.0.tar.gz) (md5 82a064d8ce8069f1fa6e9bdf570ebca7).
+The latest development source is [here](https://github.com/jakepez/archey2-osx/archive/refs/heads/develop.tar.gz) (sha256 fa80dfe9fa45c9c42d1b723454d6f07044e5649f67e000e437a3ab440ee1600a). [[Initial release soon to be updated]]
 
 ## Installation
-To get started you will need [homebrew](http://brew.sh/) to manage packages such as Python, figlet, and cowsay. To install please run the following command:
+To get started you will need [homebrew](http://brew.sh/). To install please run the following command:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+Then install Archey2:
 
 ```bash
-brew install archey
+brew install jakepez/repo/archey2
 ```
 
 ## Options
@@ -56,4 +60,5 @@ brew install archey
 ## License
 This tool is protected by the [GNU General Public License v2](http://www.gnu.org/licenses/gpl-2.0.html).
 
-Copyright [Jeffrey Hann](http://jeffreyhann.ca/) 2016
+Portions Copyright [Jeffrey Hann](http://jeffreyhann.ca/) 2016
+Copyright [Jacob Pszonowsky](https://github.com/jakepez/archey2-osx/) 2021
