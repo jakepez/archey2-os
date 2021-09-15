@@ -70,7 +70,6 @@ hostname=$(hostname | sed 's/.local//g')
 # v4 and v6 address detection
 if [[ "${opt_offline}" = f ]]; then
     ipfile4="${HOME}/.archey-ipv4"
-    ipfile6="${HOME}/.archey-ipv6"
     if [ -a "$ipfile4" ] && test `find "$ipfile4" -mmin -360`; then
         while read -r line; do
             V4="$line"
@@ -80,15 +79,7 @@ if [[ "${opt_offline}" = f ]]; then
             echo $V4 > "$ipfile4"
         fi
     fi
-    if [ -a "$ipfile6" ] && test `find "$ipfile6" -mmin -360`; then
-        while read -r line; do
-            V6="$line"
-        done < "$ipfile6"
-    else
-        if V6=$(ifconfig |grep inet6|grep temporary|cut -d " " -f 2|sed 's/\r$//'); then
-            echo $V6 > "$ipfile6"
-        fi
-    fi
+    V6=$(ifconfig |grep inet6|grep temporary|grep -v deprecated|cut -d " " -f 2|sed 's/\r$//')
 fi
 
 if [[ "${opt_localip}" = t ]]; then
@@ -243,28 +234,28 @@ if [ -a "$logofile" ]
   then
   source "$logofile"
 else
-# The ${foo#  } is a cheat so that it lines up here as well
-# as when run.
-  echo -n "
-${GREEN#  }                 ###           ${fieldlist[0]}
-${GREEN#  }               ####            ${fieldlist[1]}
-${GREEN#  }               ###             ${fieldlist[2]}
-${GREEN#  }       #######    #######      ${fieldlist[3]}
-${YELLOW# }     ######################    ${fieldlist[4]}
-${YELLOW# }    #####################      ${fieldlist[5]}
-${RED#    }    ####################       ${fieldlist[6]}
-${RED#    }    ####################       ${fieldlist[7]}
-${RED#    }    #####################      ${fieldlist[8]}
-${PURPLE# }     ######################    ${fieldlist[9]}
-${PURPLE# }      ####################     ${fieldlist[10]}
-${BLUE#   }        ################       ${fieldlist[11]}
-${BLUE#   }         ####     #####        ${fieldlist[12]}
-"
-  if [ "${fieldlist[13]}" != "" ]; then
-    echo -e "${BLUE#   }                               ${fieldlist[13]}"
+
+  i=0 # Field Count variable
+  if [ "${#fieldlist[@]}" -gt "15" ]; then
+    printf '%s\n' "${GREEN#  }                               ${fieldlist[((i++))]}"
   fi
-  if [ "${fieldlist[14]}" != "" ]; then
-    echo -e "${BLUE#   }                               ${fieldlist[14]}"
-  fi
-echo -e "${normal}"
+
+    printf '%s\n' "${GREEN#  }                               ${fieldlist[((i++))]}"
+    printf '%s\n' "${GREEN#  }                 ###           ${fieldlist[((i++))]}"
+    printf '%s\n' "${GREEN#  }               ####            ${fieldlist[((i++))]}"
+    printf '%s\n' "${GREEN#  }               ###             ${fieldlist[((i++))]}"
+    printf '%s\n' "${GREEN#  }       #######    #######      ${fieldlist[((i++))]}"
+    printf '%s\n' "${YELLOW# }     ######################    ${fieldlist[((i++))]}"
+    printf '%s\n' "${YELLOW# }    #####################      ${fieldlist[((i++))]}"
+    printf '%s\n' "${RED#    }    ####################       ${fieldlist[((i++))]}"
+    printf '%s\n' "${RED#    }    ####################       ${fieldlist[((i++))]}"
+    printf '%s\n' "${RED#    }    #####################      ${fieldlist[((i++))]}"
+    printf '%s\n' "${PURPLE# }     ######################    ${fieldlist[((i++))]}"
+    printf '%s\n' "${PURPLE# }      ####################     ${fieldlist[((i++))]}"
+    printf '%s\n' "${BLUE#   }        ################       ${fieldlist[((i++))]}"
+    printf '%s\n' "${BLUE#   }         ####     #####        ${fieldlist[((i++))]}"
+
+    while [ "${#fieldlist[@]}" -ge "$i" ]; do
+      printf '%s\n' "${BLUE#   }                               ${fieldlist[((i++))]}"
+    done
 fi
