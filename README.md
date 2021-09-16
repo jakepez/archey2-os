@@ -1,3 +1,4 @@
+
 # Archey for OS X
 An updated archey script for OS X.
 
@@ -19,6 +20,7 @@ An updated archey script for OS X.
          ####     #####        Display  : 3360 x 2100
                                IPv4     : 24.87.34.109
                                Local IP : 192.168.1.57
+
 ```
 
 ## Table Of Contents
@@ -29,13 +31,27 @@ An updated archey script for OS X.
 * [License](#license)
 
 ## Download
-The latest stable release is [2.0](https://github.com/jakepez/archey2-osx/archive/2.0.tar.gz) (md5 82a064d8ce8069f1fa6e9bdf570ebca7).
+The latest development source is [here](https://github.com/jakepez/archey2-osx/archive/refs/heads/develop.tar.gz) (sha256 fa80dfe9fa45c9c42d1b723454d6f07044e5649f67e000e437a3ab440ee1600a). [[Initial release soon to be updated]]
 
 ## Installation
-To get started you will need [homebrew](http://brew.sh/) to manage packages. To install please run the following command (using --HEAD for the "develop" branch for now:
+To get started you will need [homebrew](http://brew.sh/). To install please run the following command:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+Then install Archey2:
 
 ```bash
-brew install archey --HEAD
+brew install jakepez/repo/archey2 --HEAD
+```
+
+
+To run when your terminal starts, add something like this to your relevant .zshrc, .bashrc, .profile, etc.
+```bash
+
+if [ -f $(brew --prefix)/bin/archey ]; then
+    $(brew --prefix)/bin/archey [options]
+fi
+
 ```
 
 ## Options
@@ -64,3 +80,4 @@ This tool is protected by the [GNU General Public License v2](http://www.gnu.org
 Copyright (c) [Jacob Pszonowsky](https://jakepez.github.io/archey2-osx/) 2021
 
 Portions Copyright (c) [Jeffrey Hann](http://jeffreyhann.ca/) 2016
+
