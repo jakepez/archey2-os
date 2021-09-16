@@ -84,7 +84,7 @@ else
     | awk '/Serial/ {print $4}' \
     | cut -c 9- | cut -c1-20
       ) | sed 's|.*<configCode>\(.*\)</configCode>.*|\1|'); then
-            model=${model:0:45}
+            model=${model:0:35}
             printf '%s\n' "$checkmodel" "$model" > "$modelfile"
  fi
 fi
@@ -158,7 +158,7 @@ displayModel=$(cat /tmp/grap.plist | sed -n ${displayNum}p | awk '{print $1}' | 
 resolution="$(cat /tmp/grap.plist | grep Resolution | awk 'NF+=1' | sed 's/Resolution://g' | cut -b 2- | sed -e 's/, /\n/g' | sed -n 1p | sed 's/          //g')"
 vram="$(cat /tmp/grap.plist | grep VRAM | awk -F': ' '{print "(" $2 "), "}')"
 gpu="$(cat /tmp/grap.plist | awk -F': ' '/^\ *Chipset Model:/ {printf $2}') ${vram}${resolution}"
-gpu=${gpu:0:45}
+gpu=${gpu:0:35}
 
 # extension resolution
 displayext="$(cat /tmp/grap.plist | grep Resolution | awk 'NF+=1' | sed 's/Resolution://g' | cut -b 2- | sed -e 's/, /\n/g' | sed -n 2p | sed 's/          //g')"
