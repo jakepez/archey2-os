@@ -66,22 +66,27 @@ done
 # System Variables
 user=$(whoami)
 hostname=$(hostname | sed 's/.local//g')
-model="$(sysctl -n hw.model)"
+checkmodel="$(sysctl -n hw.model)"
+model=$checkmodel
+storedmodel=""
 
 modelfile="${HOME}/.archey-model"
-    if [ -a "$modelfile" ] && test `find "$modelfile" -mmin -3600`; then
-        while read -r line; do
-            model="$line"
-        done < "$modelfile"
-    else
-        if model=$(curl -sS --max-time 5 https://support-sp.apple.com/sp/product?cc=$(
+
+if [ -a "$modelfile" ]; then
+  storedmodel=$(head -n 1 $modelfile)
+fi
+
+if [ "$checkmodel" == "$storedmodel" ]; then
+    model=$(tail -n -1 $modelfile)
+else
+ if model=$(curl -sS --max-time 5 https://support-sp.apple.com/sp/product?cc=$(
   system_profiler SPHardwareDataType \
     | awk '/Serial/ {print $4}' \
     | cut -c 9-
       ) | sed 's|.*<configCode>\(.*\)</configCode>.*|\1|'); then
-            echo $model > "$modelfile"
-        fi
-    fi
+            printf '%s\n' "$checkmodel" "$model" > "$modelfile"
+ fi
+fi
 
 # v4 and v6 address detection
 if [[ "${opt_offline}" = f ]]; then
