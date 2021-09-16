@@ -66,6 +66,22 @@ done
 # System Variables
 user=$(whoami)
 hostname=$(hostname | sed 's/.local//g')
+model="$(sysctl -n hw.model)"
+
+modelfile="${HOME}/.archey-model"
+    if [ -a "$modelfile" ] && test `find "$modelfile" -mmin -3600`; then
+        while read -r line; do
+            model="$line"
+        done < "$modelfile"
+    else
+        if model=$(curl -sS --max-time 5 https://support-sp.apple.com/sp/product?cc=$(
+  system_profiler SPHardwareDataType \
+    | awk '/Serial/ {print $4}' \
+    | cut -c 9-
+      ) | sed 's|.*<configCode>\(.*\)</configCode>.*|\1|'); then
+            echo $model > "$modelfile"
+        fi
+    fi
 
 # v4 and v6 address detection
 if [[ "${opt_offline}" = f ]]; then
@@ -199,6 +215,7 @@ esac
 
 fieldlist[${#fieldlist[@]}]="${textColor}User     :${normal} ${user}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Hostname :${normal} ${hostname}${normal}"
+fieldlist[${#fieldlist[@]}]="${textColor}Model    :${normal} ${model}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Distro   :${normal} ${distro}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Kernel   :${normal} ${kernel}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Uptime   :${normal} ${uptime}${normal}"
@@ -236,7 +253,7 @@ if [ -a "$logofile" ]
 else
 
   i=0 # Field Count variable
-  if [ "${#fieldlist[@]}" -gt "15" ]; then
+  if [ "${#fieldlist[@]}" -gt "16" ]; then
     printf '%s\n' "${GREEN#  }                               ${fieldlist[((i++))]}"
   fi
 
