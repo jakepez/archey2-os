@@ -2,19 +2,23 @@
 An updated archey script for OS X.
 
 ```sh
-                 ###          User: jake
-               ####           Hostname: pez
-               ###            Distro: macOS Monterey 12.0
-       #######    #######     Kernel: Darwin 21.1.0
-     ######################   Uptime: 1 day, 2 hours, 42 minutes
-    #####################     Shell: /bin/zsh
-    ####################      Terminal: xterm-256color iTerm.app
-    ####################      Packages: 114
-    #####################     CPU: Apple M1 x (8)
-     ######################   Memory: 16 GB
-      ####################    Disk: 75%
-        ################      Battery: 100.00%
-         ####     #####       IP Address: 24.222.18.26
+                               User     : jake
+                               Hostname : pez
+                 ###           Model    : MacBook Air (M1, 2020)
+               ####            Distro   : macOS Monterey 12.0
+               ###             Kernel   : Darwin 21.1.0
+       #######    #######      Uptime   : 3 days, 5 hours, 46 minutes
+     ######################    Shell    : /bin/zsh
+    #####################      Time     : Wed Sep 15 14:07:04 PDT 2021
+    ####################       CPU      : Apple M1 x (8)
+    ####################       Memory   : 16 GB
+    #####################      Disk     : 76%
+     ######################    Battery  : 100%
+      ####################     Terminal : xterm-256color iTerm.app
+        ################       Graphics : Apple M1 3360 x 2100
+         ####     #####        Display  : 3360 x 2100
+                               IPv4     : 24.87.34.109
+                               Local IP : 192.168.1.57
 ```
 
 ## Table Of Contents
@@ -25,13 +29,13 @@ An updated archey script for OS X.
 * [License](#license)
 
 ## Download
-The latest stable release is [2.0](https://github.com/obihann/archey-osx/archive/1.6.0.tar.gz) (md5 82a064d8ce8069f1fa6e9bdf570ebca7).
+The latest stable release is [2.0](https://github.com/jakepez/archey2-osx/archive/2.0.tar.gz) (md5 82a064d8ce8069f1fa6e9bdf570ebca7).
 
 ## Installation
-To get started you will need [homebrew](http://brew.sh/) to manage packages such as Python, figlet, and cowsay. To install please run the following command:
+To get started you will need [homebrew](http://brew.sh/) to manage packages. To install please run the following command (using --HEAD for the "develop" branch for now:
 
 ```bash
-brew install archey
+brew install archey --HEAD
 ```
 
 ## Options
