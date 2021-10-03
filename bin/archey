@@ -161,7 +161,7 @@ mem_free="$(vm_stat | awk '/Pages free/ { printf $3 }')"
 #mem_used="$(((${mem_wired//.} + ${mem_active//.} + ${mem_inactive//.} - ${mem_compressor//.} + ${mem_compressed//.}) * ${mem_pagesize} / 1024**2))" #MB
 mem_used="$(((${mem_wired//.} + ${mem_active//.} + ${mem_inactive//.}) * ${mem_pagesize} / 1024**2))" #MB
 mem_percent="$(((${mem_used}/((${mem_total})*1024))))"
-mem="${mem_used}MB (${mem_percent}%) used of ${mem_total}GB"
+mem="${mem_used}MB used of ${mem_total}GB"
 
 # Disk space detection
 if (( ${osx_version%%.*} >= 11 )) ; then
