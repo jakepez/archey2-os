@@ -43,7 +43,7 @@ do
 		opt_localip=t
       ;;
     -h|--help)
-      echo "Archey for MacOS X $version"
+      echo "Archey2 for MacOS X $version"
       echo
       echo "Usage: $0 [options]"
       echo
@@ -52,7 +52,8 @@ do
       echo "  -b --nocolor   Turn color off."
       echo "  -c --color     Force the color on (overrides --nocolor)."
       echo "  -o --offline   Disable the IP address check."
-      echo "  -l --localip   Show local IP adddress"
+      echo "  -l --localip   Show local IP adddress."
+      echo "  -h --help      Show help."
       exit 0
       ;;
     *)
