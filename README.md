@@ -4,23 +4,24 @@ An updated archey script for OS X.
 
 ```sh
                                User     : jake
-                               Hostname : pez
+                               Hostname : jakepez.domain.com
                  ###           Model    : MacBook Air (M1, 2020)
-               ####            Distro   : macOS Monterey 12.0
+               ####            Distro   : macOS Monterey 12.0 (21A5534d)
                ###             Kernel   : Darwin 21.1.0
-       #######    #######      Uptime   : 3 days, 5 hours, 46 minutes
+       #######    #######      Uptime   : 3 days, 18 hours, 19 minutes
      ######################    Shell    : /bin/zsh
-    #####################      Time     : Wed Sep 15 14:07:04 PDT 2021
+    #####################      Time     : Sun Oct  3 10:21:27 PDT 2021
+    ####################       Packages : 29
     ####################       CPU      : Apple M1 x (8)
-    ####################       Memory   : 16 GB
-    #####################      Disk     : 76%
-     ######################    Battery  : 100%
-      ####################     Terminal : xterm-256color iTerm.app
-        ################       Graphics : Apple M1 3360 x 2100
-         ####     #####        Display  : 3360 x 2100
+    #####################      Memory   : 10254MB used of 16GB
+     ######################    Disk     : 80%
+      ####################     Battery  : 100%
+        ################       Terminal : xterm-256color iTerm.app
+         ####     #####        Graphics : Apple M1 2560 x 1600 Retina
+                               Display  : 2560 x 1600 Retina
                                IPv4     : 24.87.34.109
+                               IPv6     : 2207:573:9099:24:ad38:d7gh:a945:bda3
                                Local IP : 192.168.1.57
-
 ```
 
 ## Table Of Contents
@@ -31,7 +32,8 @@ An updated archey script for OS X.
 * [License](#license)
 
 ## Download
-The latest development source is [here](https://github.com/jakepez/archey2-osx/archive/refs/heads/develop.tar.gz) (sha256 fa80dfe9fa45c9c42d1b723454d6f07044e5649f67e000e437a3ab440ee1600a). [[Initial release soon to be updated]]
+* v1.0 Release [here](https://github.com/jakepez/archey2-osx/archive/refs/tags/v1.0.tar.gz) (sha256 4cf7685e33efed05ffaae03f9fdbe918b7d28c5fe26126710f2123b4bfff5e29).
+* Latest development source [here](https://github.com/jakepez/archey2-osx/archive/refs/heads/develop.tar.gz) (sha256 54d6f07044e5649f67e000e437a3ab440ee1600a). [[Initial release soon to be updated]]
 
 ## Installation
 To get started you will need [homebrew](http://brew.sh/). To install please run the following command:
@@ -41,7 +43,7 @@ To get started you will need [homebrew](http://brew.sh/). To install please run 
 Then install Archey2:
 
 ```bash
-brew install jakepez/repo/archey2 --HEAD
+brew install jakepez/repo/archey2
 ```
 
 
@@ -55,13 +57,13 @@ fi
 ```
 
 ## Options
-* -b,  --nocolor : Use black & white logo
-* -c,  --color   : Force using a color Logo
-* -p   --packager  Use auto detected package system (default packager: homebrew)
-* -m,  --macports : Use MacPorts instead of Homebrew to display package count
-* -o   --offline : Disable the IP address check
-* -l   --localip : Show the local IP address associated with the default adapter
-* -h,  --help : Show help
+* -p --packager  Use auto detected package system (default packager: homebrew).
+* -m --macports  Force use MacPorts as package system.
+* -b --nocolor   Turn color off.
+* -c --color     Force the color on (overrides --nocolor).
+* -o --offline   Disable the IP address check.
+* -l --localip   Show local IP adddress
+* -h --help      Show help
 
 
 ## Credits
