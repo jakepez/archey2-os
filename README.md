@@ -62,8 +62,8 @@ fi
 * -b --nocolor   Turn color off.
 * -c --color     Force the color on (overrides --nocolor).
 * -o --offline   Disable the IP address check.
-* -l --localip   Show local IP adddress
-* -h --help      Show help
+* -l --localip   Show local IP adddress.
+* -h --help      Show help.
 
 
 ## Credits
