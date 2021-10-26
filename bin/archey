@@ -267,7 +267,7 @@ if [[ ! -z $battery ]]; then
 fi
 fieldlist[${#fieldlist[@]}]="${textColor}Terminal :${normal} ${terminal}${normal}"
 fieldlist[${#fieldlist[@]}]="${textColor}Graphics :${normal} ${gpu:0:cutcols}${normal}"
-fieldlist[${#fieldlist[@]}]="${textColor}Display  :${normal} ${displayext}${normal}"
+fieldlist[${#fieldlist[@]}]="${textColor}Display  :${normal} ${displayext:0:cutcols}${normal}"
 # Texts had to be shortend to fit in 80 window
 if [ "${opt_offline}" = f ]; then
   if [ ! -z "$V4" ]; then
