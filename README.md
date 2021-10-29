@@ -32,8 +32,8 @@ An updated archey script for OS X.
 * [License](#license)
 
 ## Download
-* v1.0 Release [here](https://github.com/jakepez/archey2-osx/archive/refs/tags/v1.0.tar.gz) (sha256 4cf7685e33efed05ffaae03f9fdbe918b7d28c5fe26126710f2123b4bfff5e29).
-* Latest development source [here](https://github.com/jakepez/archey2-osx/archive/refs/heads/develop.tar.gz) (sha256 54d6f07044e5649f67e000e437a3ab440ee1600a). [[Initial release soon to be updated]]
+* v1.0.1 Release [here](https://github.com/jakepez/archey2-osx/archive/refs/tags/v1.0.1.tar.gz) (sha256 64cf51a04e89e941ce1e19433e5cc5e8e6db72dfee3d4bc082413c004084632b).
+* Latest development source [here](https://github.com/jakepez/archey2-osx/archive/refs/heads/develop.tar.gz).
 
 ## Installation
 To get started you will need [homebrew](http://brew.sh/). To install please run the following command:
