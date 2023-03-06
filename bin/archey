@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # archey2-osx (https://github.com/jakepez/archey2-osx/)
-version="1.0.2"
+version="1.0.3"
 
 # test to see if bash supports arrays
 arraytest[0]='test' || (echo 'Error: Arrays are not supported in this version of
@@ -133,15 +133,8 @@ osx_version="$(sw_vers -productVersion)"
 osx_build="$(sw_vers -buildVersion)"
 
 # define OS Short Version
-if [[ $(echo $osx_version | awk -F '.' '{print $1"."$2}') == '10.15' ]] ; then
-  codename="macOS Catalina"
-elif [[ $(echo $osx_version | awk -F '.' '{print $1"."$2}') == "10.16" || $(echo $osx_version | awk -F '.' '{print $1}') == "11" ]] ; then
-  codename="macOS Big Sur"
-elif [[ $(echo $osx_version | awk -F '.' '{print $1}') == "12" ]] ; then
-  codename="macOS Monterey"
-else
-  codename=$(xxd -ps /System/Applications/Utilities/System\ Information.app/Contents/MacOS/System\ Information | tr -d '\n' | perl -nle "print $& if m{00$(echo $osx_version | awk -F '.' '{printf $1"."$2}' | xxd -ps)00\K.*?00}" | xxd -r -p)
-fi
+
+codename="$(awk '/SOFTWARE LICENSE AGREEMENT FOR macOS/' '/System/Library/CoreServices/Setup Assistant.app/Contents/Resources/en.lproj/OSXSoftwareLicense.rtf' | awk -F 'FOR ' '{print $NF}' | awk '{print substr($0, 0, length($0)-1)}')"
 
 cores="$(sysctl -n hw.logicalcpu_max)"
 
