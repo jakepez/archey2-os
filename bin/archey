@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # archey2-osx (https://github.com/jakepez/archey2-osx/)
-version="1.0.3"
+version="1.0.4"
 
 # test to see if bash supports arrays
 arraytest[0]='test' || (echo 'Error: Arrays are not supported in this version of
@@ -138,12 +138,12 @@ codename="$(awk '/SOFTWARE LICENSE AGREEMENT FOR macOS/' '/System/Library/CoreSe
 
 cores="$(sysctl -n hw.logicalcpu_max)"
 
-Date=$(date | sed 's/CST//g')
+Date=$(date)
 distro="$codename $osx_version ($osx_build)"
 kernel="$(uname) $(uname -r)"
 shell="$SHELL"
 terminal="$TERM ${TERM_PROGRAM//_/ }"
-cpu="$(sysctl -n machdep.cpu.brand_string | sed 's/(R)//g' | sed 's/(TM)//g' | sed 's/CPU @ //g') x (${cores})"
+cpu="$(sysctl -n machdep.cpu.brand_string | sed 's/(R)//g' | sed 's/(TM)//g' | sed 's/CPU @ //g') x ${cores} cores"
 battery=$(ioreg -c AppleSmartBattery -r | awk '$1~/Capacity/{c[$1]=$3} END{OFMT="%.2f%"; max=c["\"MaxCapacity\""]; if (max>0) { print 100*c["\"CurrentCapacity\""]/max;} }')
 
 # removes (R) and (TM) from the CPU name so it fits in a standard 80 window
@@ -178,7 +178,7 @@ displayNum=$(cat -n /tmp/grap.plist | grep Displays | grep -v Graphics | awk '{p
 displayModel=$(cat /tmp/grap.plist | sed -n ${displayNum}p | awk '{print $1}' | sed 's/://g')
 
 # main resolution
-resolution="$(cat /tmp/grap.plist | grep Resolution | awk 'NF+=1' | sed 's/Resolution://g' | cut -b 2- | sed -e 's/, /\n/g' | sed -n 1p | sed 's/          //g')"
+resolution="$(cat /tmp/grap.plist | grep Resolution | awk 'NF+=1' | sed 's/Resolution://g' | cut -b 2- | sed -e 's/, /\n/g' | sed -n 1p | sed 's/          //g'|awk '{$1=$1};1')"
 vram="$(cat /tmp/grap.plist | grep VRAM | awk -F': ' '{print "(" $2 "), "}')"
 gpu="$(cat /tmp/grap.plist | awk -F': ' '/^\ *Chipset Model:/ {printf $2}') ${vram}${resolution}"
 
@@ -186,6 +186,8 @@ gpu="$(cat /tmp/grap.plist | awk -F': ' '/^\ *Chipset Model:/ {printf $2}') ${vr
 displayext="$(cat /tmp/grap.plist | grep Resolution | awk 'NF+=1' | sed 's/Resolution://g' | cut -b 2- | sed -e 's/, /\n/g' | sed -n 2p | sed 's/          //g')"
 if [[ -z $displayext ]] ; then 
   displayext=$resolution
+else
+  displayext="$resolution; $displayext"
 fi
 
 # Uptime
