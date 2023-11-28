@@ -32,7 +32,7 @@ An updated archey script for OS X.
 * [License](#license)
 
 ## Download
-* v1.0.2 Release [here](https://github.com/jakepez/archey2-osx/archive/refs/tags/v1.0.2.tar.gz) (sha256 05a936b76800d61b3f880c08147b0d1c67593a3f5e2247b62f59d496d7fcd9f3).
+* v1.0.6 Release [here](https://github.com/jakepez/archey2-osx/archive/refs/tags/v1.0.6.tar.gz) (sha256 8f776e1b8e3d9fd15043ce003eff63ba7ee220538ab7335da0a07f182be287de).
 * Latest development source [here](https://github.com/jakepez/archey2-osx/archive/refs/heads/develop.tar.gz).
 
 ## Installation
